@@ -1,6 +1,7 @@
 package id.ac.polinema.recyclerviewsangatsederhana;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,20 +29,27 @@ public class MainActivity extends AppCompatActivity {
         //menyambungkan rvSuperHero ke layout
         rvSuperHero = findViewById(R.id.rvSuperHero);
 
-        //membuat objek hero baru - awal
-        SuperHero hero = new SuperHero("Petruk");
-            //menambahkan hero ke listSuperHero
-            listSuperHero.add(hero);
-
-            //membuat objek hero baru - kedua
-            hero = new SuperHero("Gareng");
-            listSuperHero.add(hero);
+//        //membuat objek hero baru - awal
+//        SuperHero hero = new SuperHero("Petruk");
+//            //menambahkan hero ke listSuperHero
+//            listSuperHero.add(hero);
+//
+//            //membuat objek hero baru - kedua
+//            hero = new SuperHero("Gareng");
+//            listSuperHero.add(hero);
 
         //Instansiasi Adapter
-        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
-
-        //set adapter dan layoutManager
+//        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+//
+//        //set adapter dan layoutManager
+//        rvSuperHero.setAdapter(superHeroAdapter);
+//        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        for (int i=0;i<=17;i++){
+            listSuperHero.add(new SuperHero("-","Petruk"));
+        }
+        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(getApplication(),listSuperHero);
         rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.HORIZONTAL, false);
+        rvSuperHero.setLayoutManager(layoutManager);
     }
 }
